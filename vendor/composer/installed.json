@@ -1,0 +1,51 @@
+[
+    {
+        "name": "imageoptim/imageoptim",
+        "version": "1.3.1",
+        "version_normalized": "1.3.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ImageOptim/php-imageoptim-api.git",
+            "reference": "b73eb5d6747fc181de86b2de50fb158dff463618"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ImageOptim/php-imageoptim-api/zipball/b73eb5d6747fc181de86b2de50fb158dff463618",
+            "reference": "b73eb5d6747fc181de86b2de50fb158dff463618",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^5.4 || ^7.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^5.3"
+        },
+        "time": "2017-01-09 23:58:20",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "ImageOptim\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-2-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Kornel",
+                "email": "kornel@imageoptim.com"
+            }
+        ],
+        "description": "ImageOptim API for PHP",
+        "homepage": "https://imageoptim.com/api",
+        "keywords": [
+            "image",
+            "optimize",
+            "performance",
+            "resize",
+            "scale"
+        ]
+    }
+]

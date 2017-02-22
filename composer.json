@@ -1,0 +1,5 @@
+{
+    "require": {
+        "imageoptim/imageoptim": "^1.3"
+    }
+}
