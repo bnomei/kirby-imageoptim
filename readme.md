@@ -6,6 +6,8 @@ Kirby CMS file method to optimize images using [ImageOptim PHP API](https://gith
 
 Note: ImageOptim API will only be called on webserver. On localhost the kirby thumbs api will be used to avoid the timeconsuming [upload api call](https://github.com/ImageOptim/php-imageoptim-api#imagefrompathfilepath--local-source-image).
 
+If you need a lot of thumbs optimized [Imagekit](https://github.com/fabianmichael/kirby-imagekit) is a good choice.
+
 ## Requirements
 
 - [**Kirby**](https://getkirby.com/) 2.3+
