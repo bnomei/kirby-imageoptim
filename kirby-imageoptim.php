@@ -12,19 +12,19 @@ class KirbyImageOptim {
 
   public static function imageoptim(
       $file, 
-      $width = false, 
-      $height = false, 
+      $width = null, 
+      $height = null, 
       $crop = 'fit', 
       $dpr = 1, 
       $quality = 'medium') {
 
     $url = $file->url();
 
-    if($width == false) {
+    if(!$width) {
       $width = $file->width();
     }
 
-    if($height == false) {
+    if(!$height) {
       $height = round($file->height() * $width / $file->width());
     }
 
@@ -74,14 +74,15 @@ class KirbyImageOptim {
 
     // ... use kirby thumb instead
     } else {
-      
+
       if($file->orientation() == 'portrait') {
         $nw = round($file->width() * $height / $file->height());
-        $url = $file->resize($nw, $height);
+        $url = $file->thumb($nw, $height);
       } else {
-        $url = $file->resize($width);
+        $url = $file->thumb($width);
       }
       $url = str_replace(['<img src="','" alt="">'],['',''], $url);
+
     }
 
     return $url;
@@ -89,6 +90,6 @@ class KirbyImageOptim {
 }
 
 $kirby->set('file::method', 'imageoptim', 
-  function($file, $width = false, $height = false, $crop = 'fit', $dpr = 1) {
+  function($file, $width = null, $height = null, $crop = 'fit', $dpr = 1) {
     return KirbyImageOptim::imageoptim($file, $width, $height, $crop, $dpr);
 });
