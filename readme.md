@@ -4,6 +4,8 @@
 
 Kirby CMS file method to optimize images using [ImageOptim PHP API](https://github.com/ImageOptim/php-imageoptim-api) within your template code. Optimized image is refreshed if file is changed or calling code requests different parameters. It is saved to the `/thumbs` folder (`kirby()->roots()->thumbs()`).
 
+This plugin is free but if you use it in a commercial project please consider to [make a donation 🍻](https://www.paypal.me/bnomei/5).
+
 Note: ImageOptim API will only be called on webserver. On localhost the kirby thumbs api will be used to avoid the timeconsuming [upload api call](https://github.com/ImageOptim/php-imageoptim-api#imagefrompathfilepath--local-source-image).
 
 If you need a lot of thumbs optimized [Imagekit](https://github.com/fabianmichael/kirby-imagekit) is a good alternative. But if you need to preserve the exact color temperatures and hiqh quality of an image Imageoptim provides better results since it does not use GD or Imagick.
