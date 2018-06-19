@@ -83,6 +83,9 @@ $url = $myFile->imageoptim(400, 300, 'fit', 2, 'high');
 $media = $myFile->imageoptim(400, 300, 'fit', 2, 'high', true); 
 ```
 
+### v1.2.0
+There is a new site/page method `imageoptimAndSrcset` which will return a media object with srcset attributes and a `lazy` class.
+
 ## Other default settings
 
 In your `site/config.php`...

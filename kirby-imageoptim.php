@@ -101,6 +101,70 @@ class KirbyImageOptim
         }
         return $url;
     }
+
+    public static function imageoptimAndSrcset(
+      $file,
+      $width = null,
+      $height = null,
+      $crop = 'fit',
+      $dpr = 1,
+      $quality = 'medium',
+      $options = []
+    ) {
+        if (!$file || get_class($file) != 'File') {
+            return '';
+        }
+        if ($file->extension() == 'svg') {
+            return f::read($file->root());
+        }
+
+        $defaults = [
+              'alt' => '',
+              'class' => c::get('plugin.imageoptim.srcset.class', ''),
+              'lazy' => c::get('plugin.imageoptim.srcset.lazy', true),
+              'breakpoints' => c::get('plugin.imageoptim.srcset.breakpoints', [576, 768, 992, 1200, 1440]),
+              'widths' => c::get('plugin.imageoptim.srcset.widths', [100, 100, 100, 100, 100, 100]),
+          ];
+        $settings = array_merge($defaults, $options);
+        $lazy = $settings['lazy'];
+        $alt = $settings['alt'];
+        $class = $settings['class'];
+        $widths = $settings['widths'];
+
+        $bpmax = max($settings['breakpoints']);
+        $src = self::imageoptim(
+            $file,
+            $bpmax,
+            $height && $width ? ($bpmax / $width * $height) : $height,
+            $crop,
+            $dpr,
+            $quality
+          )->url();
+
+        $thumbs = [];
+        $wisize = ["(max-width: {$settings['breakpoints'][0]}px) {$settings['widths'][0]}vw"];
+        $c = 1;
+        foreach ($settings['breakpoints'] as $bp) {
+            // if($bp > $file->width()) continue;
+            $i = self::imageoptim($file, $bp);
+            $thumbs[] = $i->url() . " {$bp}w";
+            $w =  $settings['widths'][$c];
+            $wisize[] = "(min-width: {$bp}px) {$w}vw";
+            $c++;
+        }
+        $srcset = rtrim(implode(', ', $thumbs), ', ');
+        $sizes = (min($widths) == max($widths)) ? '' : rtrim(implode(', ', $wisize), ', ');
+          
+        $attrs = array(
+            'alt' => strlen($alt) ? $alt : $file->caption()->or(ucwords($file->name())),
+            ($lazy ? 'data-src' : 'src') => $src,
+            ($lazy ? 'data-srcset' : 'srcset') => $srcset,
+            'sizes' => $sizes,
+            'class' => $lazy ? trim('lazy lozad '.$class) : $class
+          );
+
+        return html::tag('img', null, $attrs);
+    }
 }
 
 $kirby->set(
@@ -108,5 +172,13 @@ $kirby->set(
     'imageoptim',
     function ($file, $width = null, $height = null, $crop = 'fit', $dpr = 1, $quality = 'medium', $media = null) {
         return KirbyImageOptim::imageoptim($file, $width, $height, $crop, $dpr, $quality, $media);
+    }
+);
+
+$kirby->set(
+    'file::method',
+    'imageoptimAndSrcset',
+    function ($file, $width = null, $height = null, $crop = 'fit', $dpr = 1, $quality = 'medium', $options = []) {
+        return KirbyImageOptim::imageoptimAndSrcset($file, $width, $height, $crop, $dpr, $quality, $options);
     }
 );
