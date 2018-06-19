@@ -78,6 +78,23 @@ $url = $myFile->imageoptim(400, 300, 'fit', 2);
 
 // fit to 400px width and 300px height at 2x dpr and 'high' quality
 $url = $myFile->imageoptim(400, 300, 'fit', 2, 'high'); 
+
+// fit to 400px width and 300px height at 2x dpr and 'high' quality, return Media-Object instead of url
+$media = $myFile->imageoptim(400, 300, 'fit', 2, 'high', true); 
+```
+
+## Other default settings
+
+In your `site/config.php`...
+
+```php
+c::get('plugin.imageoptim.media', false); // default false
+// since v1.1.0
+// if false will return url else Media-Object
+
+c::get('plugin.imageoptim.filename', false); // default false
+// since v1.1.0
+// if false filename will be {hash} only else {filename-hash}
 ```
 
 ## Disclaimer
