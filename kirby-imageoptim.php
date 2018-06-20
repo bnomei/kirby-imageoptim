@@ -138,7 +138,8 @@ class KirbyImageOptim
             $height && $width ? ($bpmax / $width * $height) : $height,
             $crop,
             $dpr,
-            $quality
+            $quality,
+            true
           )->url();
 
         $thumbs = [];
@@ -146,7 +147,7 @@ class KirbyImageOptim
         $c = 1;
         foreach ($settings['breakpoints'] as $bp) {
             // if($bp > $file->width()) continue;
-            $i = self::imageoptim($file, $bp);
+            $i = self::imageoptim($file, $bp, null, $crop, $dpr, $quality, true);
             $thumbs[] = $i->url() . " {$bp}w";
             $w =  $settings['widths'][$c];
             $wisize[] = "(min-width: {$bp}px) {$w}vw";
