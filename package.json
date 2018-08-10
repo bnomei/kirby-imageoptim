@@ -1,7 +1,7 @@
 {
   "name": "kirby-imageoptim",
   "description": "Kirby CMS file method to optimize images using ImageOptim within your template code.",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "type": "kirby-plugin",
   "license": "MIT"
 }
