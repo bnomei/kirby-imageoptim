@@ -161,7 +161,7 @@ class KirbyImageOptim
             ($lazy ? 'data-src' : 'src') => $src,
             ($lazy ? 'data-srcset' : 'srcset') => $srcset,
             'sizes' => $sizes,
-            'class' => $lazy ? trim('lazy lozad '.$class) : $class
+            'class' => $lazy ? trim('lazy lozad lazyload '.$class) : $class
           );
 
         return html::tag('img', null, $attrs);
