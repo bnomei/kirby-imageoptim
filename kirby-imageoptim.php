@@ -13,13 +13,13 @@ class KirbyImageOptim
     }
 
     public static function imageoptim(
-      $file,
-      $width = null,
-      $height = null,
-      $crop = 'fit',
-      $dpr = 1,
-      $quality = 'medium',
-      $media = null
+        $file,
+        $width = null,
+        $height = null,
+        $crop = 'fit',
+        $dpr = 1,
+        $quality = 'medium',
+        $media = null
     ) {
         $url = $file->url();
 
@@ -55,15 +55,15 @@ class KirbyImageOptim
             }
 
             $filepath = str_replace(
-              $file->filename(),
-              $hash,
-              kirby()->roots()->thumbs().DS.$file->uri()
+                $file->filename(),
+                $hash,
+                kirby()->roots()->thumbs().DS.$file->uri()
             );
 
             $urlOptim = str_replace(
-              $file->filename(),
-              $hash,
-              kirby()->urls()->thumbs().'/'.$file->uri()
+                $file->filename(),
+                $hash,
+                kirby()->urls()->thumbs().'/'.$file->uri()
             );
 
             if (!f::exists($filepath)) {
@@ -103,13 +103,13 @@ class KirbyImageOptim
     }
 
     public static function imageoptimAndSrcset(
-      $file,
-      $width = null,
-      $height = null,
-      $crop = 'fit',
-      $dpr = 1,
-      $quality = 'medium',
-      $options = []
+        $file,
+        $width = null,
+        $height = null,
+        $crop = 'fit',
+        $dpr = 1,
+        $quality = 'medium',
+        $options = []
     ) {
         if (!$file || get_class($file) != 'File') {
             return '';

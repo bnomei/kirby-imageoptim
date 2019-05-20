@@ -20,11 +20,25 @@ class ComposerStaticInitdb60f64c7c86327cd38317daa842af05
         ),
     );
 
+    public static $classMap = array (
+        'ImageOptim\\API' => __DIR__ . '/..' . '/imageoptim/imageoptim/src/API.php',
+        'ImageOptim\\APIException' => __DIR__ . '/..' . '/imageoptim/imageoptim/src/APIException.php',
+        'ImageOptim\\AccessDeniedException' => __DIR__ . '/..' . '/imageoptim/imageoptim/src/AccessDeniedException.php',
+        'ImageOptim\\FileRequest' => __DIR__ . '/..' . '/imageoptim/imageoptim/src/FileRequest.php',
+        'ImageOptim\\InvalidArgumentException' => __DIR__ . '/..' . '/imageoptim/imageoptim/src/InvalidArgumentException.php',
+        'ImageOptim\\NetworkException' => __DIR__ . '/..' . '/imageoptim/imageoptim/src/NetworkException.php',
+        'ImageOptim\\NotFoundException' => __DIR__ . '/..' . '/imageoptim/imageoptim/src/NotFoundException.php',
+        'ImageOptim\\OriginServerException' => __DIR__ . '/..' . '/imageoptim/imageoptim/src/OriginServerException.php',
+        'ImageOptim\\Request' => __DIR__ . '/..' . '/imageoptim/imageoptim/src/Request.php',
+        'ImageOptim\\URLRequest' => __DIR__ . '/..' . '/imageoptim/imageoptim/src/URLRequest.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitdb60f64c7c86327cd38317daa842af05::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitdb60f64c7c86327cd38317daa842af05::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitdb60f64c7c86327cd38317daa842af05::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -6,4 +6,14 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'ImageOptim\\API' => $vendorDir . '/imageoptim/imageoptim/src/API.php',
+    'ImageOptim\\APIException' => $vendorDir . '/imageoptim/imageoptim/src/APIException.php',
+    'ImageOptim\\AccessDeniedException' => $vendorDir . '/imageoptim/imageoptim/src/AccessDeniedException.php',
+    'ImageOptim\\FileRequest' => $vendorDir . '/imageoptim/imageoptim/src/FileRequest.php',
+    'ImageOptim\\InvalidArgumentException' => $vendorDir . '/imageoptim/imageoptim/src/InvalidArgumentException.php',
+    'ImageOptim\\NetworkException' => $vendorDir . '/imageoptim/imageoptim/src/NetworkException.php',
+    'ImageOptim\\NotFoundException' => $vendorDir . '/imageoptim/imageoptim/src/NotFoundException.php',
+    'ImageOptim\\OriginServerException' => $vendorDir . '/imageoptim/imageoptim/src/OriginServerException.php',
+    'ImageOptim\\Request' => $vendorDir . '/imageoptim/imageoptim/src/Request.php',
+    'ImageOptim\\URLRequest' => $vendorDir . '/imageoptim/imageoptim/src/URLRequest.php',
 );
